@@ -127,3 +127,4 @@ Next steps for CICD
 # Monitoring
 Prometheus and Grafana have been added to the EKS cluster with a basic hardcoded password that is enforced to be changed on the first login to Grafana.
 The configs for these two services are not ready at this stage.
+
