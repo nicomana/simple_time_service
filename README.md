@@ -1,4 +1,4 @@
-# Simple Time Service
+# Simple Time Service API
 
 ## Overview
 This repository contains the "simple_time_service" api and aswell the terraform stack to deploy a kubernetes environment on AWS using EKS.
@@ -14,7 +14,7 @@ There are two ways to run the api locally
 ### Cloning the project
 1. **Clone the Repository**:
     ```sh
-    git clone <repository-url> ***** ADD URL
+    git clone https://github.com/nicomana/simple_time_service
     cd simple_time_service/app
     ```
 
@@ -57,8 +57,8 @@ The infrastructure is managed by `terraform`, to deploy you'll have to export yo
 
 1. **Clone the Repository**:
     ```sh
-    git clone <repository-url> ***** ADD URL
-    cd simple_time_service/app
+    git clone https://github.com/nicomana/simple_time_service
+    cd simple_time_service/terraform
     ```
 
 2. **Export your AWS Credentials**:
@@ -90,6 +90,10 @@ Once the stack is deployed, for this example, the EKS cluster endpoint will be a
     export AWS_SECRET_ACCESS_KEY=<SECRET_KEY_ID>
     aws eks update-kubeconfig --name particle41-dev-cluster
     ```
+To remove delete the full stack run:
+```
+terraform destroy
+```
 
 # CI-CD
 
@@ -118,6 +122,7 @@ Next steps for CICD
 - Pylint
 - Terraform lint
 - Docker Image Scan
+- Add backend to Terraform
 
 # Monitoring
 Prometheus and Grafana have been added to the EKS cluster with a basic hardcoded password that is enforced to be changed on the first login to Grafana.
