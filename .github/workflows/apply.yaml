@@ -27,7 +27,7 @@ jobs:
           aws-region: us-west-2
       - name: "Docker Build"
         id: docker_build
-        run: docker build -t 32682504/simple_time_service:latest .
+        run: docker build -t 32682504/simple_time_service:latest app/
       - name: "Docker Build"
         id: docker_push
         run: docker push 32682504/simple_time_service:latest

@@ -32,7 +32,7 @@ jobs:
           aws-region: us-west-2
       - name: "Docker Build"
         id: docker_build
-        run: docker build -t 32682504/simple_time_service:latest .
+        run: docker build -t 32682504/simple_time_service:latest app/
       - name: "setup-terraform"
         uses: hashicorp/setup-terraform@v1
         with:
