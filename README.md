@@ -67,18 +67,18 @@ The infrastructure is managed by `terraform`, to deploy you'll have to export yo
     export AWS_SECRET_ACCESS_KEY=<SECRET_KEY_ID>
     ```
 
-2. **Navigate to the Terraform directory**:
+3. **Navigate to the Terraform directory**:
     ```sh
     cd terraform/
     ```
 
-3. **Init and Plan to Validate the Stack**:
+4. **Init and Plan to Validate the Stack**:
     ```sh
     terraform init
     terraform plan
     ```
 
-4. **Apply Changes**:
+5. **Apply Changes**:
     ```sh
     terraform apply
     ```
@@ -94,6 +94,14 @@ To remove delete the full stack run:
 ```
 terraform destroy
 ```
+
+Note: The terraform stack uses a module to create a DynamoDB table and S3 bucket 
+using the stack name and environment name.
+```
+bucket_name    = "${local.name}-${var.environment}-tfstate"
+dynamodb_table = "${local.name}-${var.environment}-tflock"
+```
+Those two resources will be created along with stack using the module `remote_state`
 
 # CI-CD
 
@@ -122,7 +130,6 @@ Next steps for CICD
 - Pylint
 - Terraform lint
 - Docker Image Scan
-- Add backend to Terraform
 
 # Monitoring
 Prometheus and Grafana have been added to the EKS cluster with a basic hardcoded password that is enforced to be changed on the first login to Grafana.
