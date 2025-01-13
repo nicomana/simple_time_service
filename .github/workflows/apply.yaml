@@ -41,8 +41,9 @@ jobs:
       - name: "Terraform Validate"
         id: validate
         run: terraform -chdir=terraform/ validate -no-color
-      - name: "Terraform Apply"
-        id: apply
-        run: terraform -chdir=terraform/ apply -no-color -input=false -auto-approve
-        env:
-          TF_INPUT: 0
+      #COMMENTED TO AVOID DEPLOYMENTS
+      # - name: "Terraform Apply"
+      #   id: apply
+      #   run: terraform -chdir=terraform/ apply -no-color -input=false -auto-approve
+      #   env:
+      #     TF_INPUT: 0
