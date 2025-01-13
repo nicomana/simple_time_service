@@ -54,3 +54,11 @@ module "vpc" {
 
   tags = local.tags
 }
+
+module "remote_state" {
+  source = "ansraliant/s3-state/aws"
+
+  bucket_name    = "${local.name}-${var.environment}-tfstate"
+  dynamodb_table = "${local.name}-${var.environment}-tflock"
+  states         = { infra = "../backend.tf.json" }
+}
