@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: simple-time-service
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: simple-time-service
@@ -28,22 +28,22 @@ spec:
     app: simple-time-service
   ports:
     - protocol: TCP
-      port: 80 
+      port: 8000
       targetPort: 8000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: simple-time-ingress
+  name: simple-time-service
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-  - host: nginx-ingress-ingress-nginx-controller
+  - host: ""
     http:
       paths:
-      - path: /
+      - path: /time
         pathType: Prefix
         backend:
           service:
